@@ -1,46 +1,27 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 5.1.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2016 at 01:05 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Jan 24, 2022 at 10:53 AM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `bloodbank`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `advertisement`
---
-
-CREATE TABLE IF NOT EXISTS `advertisement` (
-  `adv_id` int(100) NOT NULL AUTO_INCREMENT,
-  `camp_title` varchar(100) NOT NULL,
-  `org_by` varchar(100) NOT NULL,
-  `pic` varchar(700) NOT NULL,
-  `detail` varchar(900) NOT NULL,
-  PRIMARY KEY (`adv_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `advertisement`
---
-
-INSERT INTO `advertisement` (`adv_id`, `camp_title`, `org_by`, `pic`, `detail`) VALUES
-(4, 'Ramgarhia Engg Collage', 'Ramgarhia education consial', '2.jpg', 'Blood donation camp Organised by REC.  One who donate get certificate by REC\r\nThat can help you also to gets blood in jeopard time');
+CREATE DATABASE IF NOT EXISTS `bloodbank` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bloodbank`;
 
 -- --------------------------------------------------------
 
@@ -52,21 +33,21 @@ CREATE TABLE IF NOT EXISTS `bloodgroup` (
   `bg_id` int(100) NOT NULL AUTO_INCREMENT,
   `bg_name` varchar(100) NOT NULL,
   PRIMARY KEY (`bg_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bloodgroup`
 --
 
 INSERT INTO `bloodgroup` (`bg_id`, `bg_name`) VALUES
-(13, 'o+'),
-(14, 'o-'),
-(15, 'AB+'),
-(16, 'AB-'),
-(17, 'A+'),
-(18, 'A-'),
-(19, 'B+'),
-(20, 'B-');
+(1, 'o+'),
+(2, 'o-'),
+(3, 'AB+'),
+(4, 'AB-'),
+(5, 'A+'),
+(6, 'A-'),
+(7, 'B+'),
+(8, 'B-');
 
 -- --------------------------------------------------------
 
@@ -83,17 +64,17 @@ CREATE TABLE IF NOT EXISTS `camp` (
   `pic` varchar(900) NOT NULL,
   `detail` varchar(1000) NOT NULL,
   PRIMARY KEY (`camp_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `camp`
 --
 
 INSERT INTO `camp` (`camp_id`, `camp_title`, `organised_by`, `state`, `city`, `pic`, `detail`) VALUES
-(1, 'Ramgarhia Engg Collage', 'Ramgarhia Counsil', 1, 1, 'blood_donation_camp.jpg', 'A Blood Donation Camp at Ramgarhia Engg Collage organized by Ramgarhia consial , Phagwara.'),
-(7, ' Lovely Professional University', 'Lovely Professional University', 1, 7, 'B.D camp 034.jpg', 'A Blood Donation Camp at Lovely Professional University organized by Lovely Professional University , Jalandhar.'),
-(8, 'Guru Nanak College', 'Lions Club', 1, 1, 'p36.jpg', 'A Blood Donation Camp at G.N.C College, Phagwara organized by Lions Club, Phagwara.'),
-(9, 'Apee Jay College', 'Human Welfare Society', 1, 1, 'p38_2.jpg', 'A Blood Donation Camp at Apee-Jay College, Jalandhar organized by Human Welfare Society, Jalandhar.\n ');
+(1, 'MIT Collage', 'Blood foundation', 1, 1, 'blood_donation_camp.jpg', 'A Blood Donation Camp at MIT Collage organized by Blood Foundation.'),
+(2, 'Pune Blood Foundation', 'PBF', 1, 2, 'p38_2.jpg', 'A Blood Donation Camp at PBF.\r\n '),
+(3, 'Rakt Blood Bank', 'Blood Bank', 1, 1, 'MIT-WPU.jpg', 'Blood Bank in pune'),
+(10, 'Blood Foundation', 'Blood Foundation', 2, 8, 'Reflex logo.png', 'Blood donation camp in Delhi');
 
 -- --------------------------------------------------------
 
@@ -108,16 +89,17 @@ CREATE TABLE IF NOT EXISTS `city` (
   `district` varchar(100) NOT NULL,
   `state` int(100) NOT NULL,
   PRIMARY KEY (`city_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `city`
 --
 
 INSERT INTO `city` (`city_id`, `city_name`, `pin_code`, `district`, `state`) VALUES
-(1, 'phagwara', '144401', 'kapurthala', 1),
-(4, 'faridabad', '121001', 'Gurgaon', 2),
-(7, 'jalandhar', '144001', 'jalandhar', 1);
+(1, 'Pune', '411043', 'Pune', 1),
+(2, 'Nashik', '410253', 'Pune', 1),
+(3, 'Mumbai', '144526', 'Mumbai', 1),
+(8, 'delhi', '021554', 'delhi', 2);
 
 -- --------------------------------------------------------
 
@@ -132,18 +114,17 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `mobile` varchar(100) NOT NULL,
   `subj` varchar(700) NOT NULL,
   PRIMARY KEY (`row_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `contacts`
 --
 
 INSERT INTO `contacts` (`row_id`, `name`, `email`, `mobile`, `subj`) VALUES
-(1, 'nannu', 'bawa12@ymail.com', '98889619909', 'save life'),
-(2, 'manu', 'manukaler@yahoo.com', '9888889765', 'save life'),
-(3, 'neeru', 'neeru45@gmail.com', '9463958058', 'give blooooooood'),
-(4, 'paras', 'bhatia34@gmail.com', '9216291294', 'save life'),
-(10, 'herry', 'herry@ymaol.com', '8790675438', 'give me a blood');
+(11, 'abhi', 'A@acs.com', '542434', 'Need help'),
+(12, 'Abc', 'Abc@gmail.com', '9923247327', 'Your website has bug!'),
+(13, 'test123', 'test123@gmail.com', '12345678', 'some suggestion'),
+(14, 'Abhi1234', 'Abc1234@gmail.com', '1231244123', 'some suggestion');
 
 -- --------------------------------------------------------
 
@@ -157,36 +138,25 @@ CREATE TABLE IF NOT EXISTS `donarregistration` (
   `gender` varchar(100) NOT NULL,
   `age` varchar(100) NOT NULL,
   `mobile` varchar(100) NOT NULL,
-  `b_id` int(100) NOT NULL,
+  `bgroup` int(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `pwd` int(100) NOT NULL,
+  `pwd` varchar(100) NOT NULL,
   `pic` varchar(1000) NOT NULL,
   PRIMARY KEY (`donar_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `donarregistration`
 --
 
-INSERT INTO `donarregistration` (`donar_id`, `name`, `gender`, `age`, `mobile`, `b_id`, `email`, `pwd`, `pic`) VALUES
-(3, 'neeru', 'female', '20', '9463958058', 13, 'neeru.bawa@yahoo.com', 123, 'neeru.jpg'),
-(4, 'Paras Bhatia', 'male', '21', '9888961990', 13, 'parasbhatia08@gmail.com', 123, '11168037_1610636085842033_904443745256932191_n.jpg'),
-(5, 'Rakesh', 'male', '22', '9876505652', 17, 'rakesh12@gmil.com', 123, '1002679_629448530471361_5912528223898153120_n.jpg'),
-(6, 'Manu', 'female', '20', '9779730479', 13, 'manpreetkaler@yahoo.com', 123, '12144826_691191231017304_7118038794667291151_n.jpg'),
-(7, 'Sukhwinder', 'male', '22', '01823280290', 17, 'sunnysuyan@gmail.com', 123, 'p3Penguins.jpg'),
-(8, 'Abhishek', 'male', '24', '0123456780', 19, 'abhi@ymail.com', 123, 'resizedBlood donation (1).jpg'),
-(9, 'Ramanjeet Kaur', 'female', '26', '9295769630', 15, 'rbawa08@yahoo.com', 123, '11261437_1624099511137421_8482759699813102898_n.jpg'),
-(10, 'kuldip Banga', 'male', '26', '9878967543', 15, 'kbanga@yahoo.com', 123, '10593057_728311113906338_1063644592728298376_n.jpg'),
-(11, 'Jaspinder', 'male', '24', '9445678765', 16, 'singhjaspinder12@gmail.com', 123, '12038392_969929529729736_1007747926670734265_n (1).jpg'),
-(12, 'Sahil', 'male', '20', '8591824296', 13, 'sahildubey@gmail.com', 123, '12038380_834746969972073_6382623771453128938_n.jpg'),
-(13, 'sonu', 'male', '25', '9594918765', 16, 'sonukhana34@gmail.com', 123, '11863382_1032998280067097_2552428582935820453_n.jpg'),
-(14, 'Vinny', 'male', '24', '01824230721', 18, 'vinny786@gmail.com', 123, '11175046_366978330169273_8044521424217911178_n.jpg'),
-(15, 'Rishav Bhatia', 'male', '19', '8781846758', 19, 'rbhatia@ymail.com', 123, '1491626_647476172014342_6155162312561723489_n.jpg'),
-(16, 'Rahul Bangar', 'male', '25', '9216291294', 20, 'raulban@gmail.com', 123, '11899909_948967995160204_759838727467883977_n.jpg'),
-(17, 'Prabhjot', 'male', '24', '9818134576', 20, 'prabh786@gmail.com', 123, '11899866_690854484348510_8725848025714675727_n.jpg'),
-(18, 'Ridhima', 'female', '25', '9889786545', 14, 'ridhi@ymail.com', 123, '1.jpg'),
-(19, 'Preet karanq', 'female', '28', '8427429079', 14, 'preet22@yahoo.com', 123, '123.jpg'),
-(20, 'mntrtgrt', 'female', '35', '9888976570', 18, 'manat@yahoo.com', 123, 'ccccc.jpg');
+INSERT INTO `donarregistration` (`donar_id`, `name`, `gender`, `age`, `mobile`, `bgroup`, `email`, `pwd`, `pic`) VALUES
+(1, 'abhi', 'male', '24', '123442312312', 1, 'abhi123@gmail.com', '123', 'anonymous.jpg'),
+(2, 'aby', 'male', '22', '144123321', 2, 'aby@gmail.com', 'A123', 'lockscreeen.jpg'),
+(3, 'Gladys', 'male', '12', '3431212', 1, 'GladysTOConnor@dayrep.com', '123', 'Wallpaper.jpg'),
+(4, 'Jeanetta', 'male', '23', '1354123', 3, 'JeanettaGMartinez@armyspy.com', '123', 'lockscreeen.jpg'),
+(5, 'Virgil', 'male', '43', '122413413', 1, 'VirgilGGraham@jourrapide.com', '123', 'anonymous.jpg'),
+(6, 'test123', 'male', '21', '123456789', 2, 'test123@gmail.com', 'test123', 'anonymous.jpg'),
+(7, 'test1234', 'male', '23', '123456789', 4, 'test1234@gmail.com', 'test1234', 'lockscreeen.jpg');
 
 -- --------------------------------------------------------
 
@@ -197,27 +167,20 @@ INSERT INTO `donarregistration` (`donar_id`, `name`, `gender`, `age`, `mobile`, 
 CREATE TABLE IF NOT EXISTS `donation` (
   `donation_id` int(100) NOT NULL AUTO_INCREMENT,
   `camp_id` int(100) NOT NULL,
-  `ddate` datetime NOT NULL,
+  `ddate` date NOT NULL,
   `units` int(100) NOT NULL,
   `detail` varchar(800) NOT NULL,
   `email` varchar(100) NOT NULL,
   PRIMARY KEY (`donation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `donation`
 --
 
 INSERT INTO `donation` (`donation_id`, `camp_id`, `ddate`, `units`, `detail`, `email`) VALUES
-(28, 1, '2014-09-14 00:00:00', 20, 'A Blood Donation Camp at Ramgarhia Engg Collage organized by Ramgarhia consial , Phagwara.', 'parasbhatia08@gmail.com'),
-(29, 7, '2015-05-11 00:00:00', 30, 'A Blood Donation Camp at Lovely Professional University organized by Lovely Professional University , Jalandhar.', 'parasbhatia08@gmail.com'),
-(30, 8, '2014-11-04 00:00:00', 25, 'A Blood Donation Camp at G.N.C College, Phagwara organized by Lions Club, Phagwara.', 'parasbhatia08@gmail.com'),
-(31, 9, '2014-12-18 00:00:00', 22, 'A Blood Donation Camp at Apee-Jay College, Jalandhar organized by Human Welfare Society, Jalandhar.\r\n ', 'parasbhatia08@gmail.com'),
-(32, 7, '2010-06-19 00:00:00', 27, 'A Blood Donation Camp at Lovely Professional Unive...', 'preet22@yahoo.com'),
-(33, 8, '2010-08-20 00:00:00', 17, 'save life', 'manpreetkaler@yahoo.com'),
-(34, 9, '2009-06-05 00:00:00', 10, 'give blood', 'manpreetkaler@yahoo.com'),
-(35, 1, '2012-09-13 00:00:00', 22, 'save life', 'sahildubey@gmail.com'),
-(36, 9, '0000-00-00 00:00:00', 444, 'kjj', 'neeru.bawa@yahoo.com');
+(1, 1, '2000-06-08', 45, 'Blood Donated', 'abhi123@gmail.com'),
+(2, 1, '2021-04-17', 4, '', 'abhi123@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -231,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `gallary` (
   `title` varchar(400) NOT NULL,
   `pic` varchar(800) NOT NULL,
   PRIMARY KEY (`pic_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallary`
@@ -274,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `title` varchar(100) NOT NULL,
   `detail` varchar(900) NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `news`
@@ -298,20 +261,21 @@ CREATE TABLE IF NOT EXISTS `requestes` (
   `mobile` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `bgroup` int(100) NOT NULL,
-  `reqdate` datetime NOT NULL,
+  `reqdate` date NOT NULL,
   `detail` varchar(500) NOT NULL,
   PRIMARY KEY (`req_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `requestes`
 --
 
 INSERT INTO `requestes` (`req_id`, `name`, `gender`, `age`, `mobile`, `email`, `bgroup`, `reqdate`, `detail`) VALUES
-(7, 'balwant singh', 'male', '22', '8427420298', 'balwant11@gmail.com', 19, '2015-01-15 00:00:00', 'save life'),
-(8, 'japleen', 'female', '22', '9216291294', 'jsimran08@gmail.com', 13, '2014-01-12 00:00:00', 'save life'),
-(9, 'Naresh', 'female', '21', '8427420291', 'nareshheer719@gmail.com', 17, '2015-01-18 00:00:00', 'save life'),
-(10, 'Taran', 'male', '55', '7589325050', 'taran@ymail.com', 14, '2012-01-29 00:00:00', '');
+(1, 'Micheal', 'male', '34', '1431423', 'MichealRDaniels@jourrapide.com', 1, '1971-01-17', 'Need blood'),
+(2, 'Richard', 'male', '12', '53424234', 'RichardJGoldsmith@jourrapide.com', 2, '2008-01-13', 'Need o- blood'),
+(3, 'Elaine', 'male', '53', '143432543245', 'Adw@gmail.com', 3, '1990-01-19', 'Help'),
+(4, 'test999', 'male', '34', '123465789', 'test999@gmail.com', 3, '1984-01-17', 'need blood'),
+(5, 'test12345', 'male', '34', '1926898496', 'test12345@gmail.com', 4, '1986-01-15', 'need some blood');
 
 -- --------------------------------------------------------
 
@@ -323,18 +287,15 @@ CREATE TABLE IF NOT EXISTS `state` (
   `state_id` int(100) NOT NULL AUTO_INCREMENT,
   `state_name` varchar(100) NOT NULL,
   PRIMARY KEY (`state_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `state`
 --
 
 INSERT INTO `state` (`state_id`, `state_name`) VALUES
-(1, 'punjab'),
-(2, 'delhi'),
-(3, 'Andhra Pradesh'),
-(4, 'Bihar'),
-(5, 'Assam');
+(1, 'Maharashtra'),
+(2, 'delhi');
 
 -- --------------------------------------------------------
 
@@ -353,8 +314,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`username`, `pwd`, `typeofuser`) VALUES
-('manu', 'manu', 'Admin'),
-('neeru', 'neeru', 'General');
+('abhi', '123', 'Admin'),
+('aby', '123', 'General'),
+('abc', '123', 'General');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
