@@ -61,7 +61,7 @@
 
                 </div>
                 <div id="signupLnk" class="signup-link">Not a Donor? <a href="registration.php">Sign-up now</a></div>
-                <div id="signupLnk" class="signup-link" style="margin-top: 2rem">Admin-<a href="/BloodBank/admin/admimlogin.php">Login</a></div>
+                <div id="signupLnk" class="signup-link" style="margin-top: 2rem">Admin-<a href="/admin/admimlogin.php">Login</a></div>
             </form>
         </div>
 

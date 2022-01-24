@@ -6,10 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Untitled Document</title>
     <link href="css/lightbox.css" rel="stylesheet" />
-    <link href="/BloodBank/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="/StyleSheet.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <link href="/BloodBank/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/BloodBank/css/navbar.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/css/navbar.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Bootstrap cdn Start  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -57,7 +57,7 @@
         </ul>
     </div>
     <div class="jumbotron">
-        <img src="/BloodBank/img/HomepgJ.png" alt="">
+        <img src="/img/HomepgJ.png" alt="">
     </div>
     <div class="container">
         <div class="field">
